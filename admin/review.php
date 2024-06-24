@@ -86,7 +86,7 @@ if ($result->num_rows > 0) {
                         <td class='border text-center px-4 py-2 hidden md:table-cell'><?php echo $request['permit_status']; ?></td>
                         <td class='border text-center px-4 py-2'>
                             <a href="view_request.php?request=<?php echo $request['mainRequestId']; ?>" class="text-blue-500 hover:text-blue-800 underline">View</a>
-                            <a href="delete_request.php?request=<?php echo $request['mainRequestId']; ?>" class="text-red-500 hover:text-red-800 underline" onclick="return confirm('Are you sure you want to delete this request?');">Delete</a>
+                            <!-- <a href="delete_request.php?request=<?php echo $request['mainRequestId']; ?>" class="text-red-500 hover:text-red-800 underline" onclick="return confirm('Are you sure you want to delete this request?');">Delete</a> -->
                         </td>
                     </tr>
                 <?php endforeach; ?>
