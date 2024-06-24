@@ -1,6 +1,6 @@
 <?php
 
-$status = "dev";
+$status = "prod";
 
 if ($status == "prod") {
     $dbuser = "fadhftvq_permit-user";
