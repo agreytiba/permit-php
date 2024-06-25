@@ -47,7 +47,7 @@
         <div class="mySlides fade">
             <img src="public/image/picture1.jpg" style="width:100%">
             <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-                <h2 class="text-white text-4xl font-bold">Slide 1 Title</h2>
+                <h2 class="text-white text-4xl font-bold">Permit app</h2>
                 <p class="text-white mt-2">This is a subtitle for Slide 1</p>
                 <p class="text-white mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
@@ -56,7 +56,7 @@
         <div class="mySlides fade">
             <img src="public/image/picture2.jpg" style="width:100%">
             <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-                <h2 class="text-white text-4xl font-bold">Slide 2 Title</h2>
+                <h2 class="text-white text-4xl font-bold">permit app </h2>
                 <p class="text-white mt-2">This is a subtitle for Slide 2</p>
                 <p class="text-white mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
@@ -65,7 +65,7 @@
         <div class="mySlides fade">
             <img src="public/image/picture1.jpg" style="width:100%">
             <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-                <h2 class="text-white text-4xl font-bold">Slide 3 Title</h2>
+                <h2 class="text-white text-4xl font-bold">permit app</h2>
                 <p class="text-white mt-2">This is a subtitle for Slide 3</p>
                 <p class="text-white mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>

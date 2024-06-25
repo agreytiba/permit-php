@@ -139,7 +139,7 @@ if ($workRequests['is_approved'] == 1) {
                     <div class="text-start px-2 mb-6">
                         <!-- <a href="edit_request.php?request=<?php echo $requestId; ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit Request</a> -->
                     </div>
-                    <a href="generate_pdf.php?request=<?php echo $requestId; ?>" target="_blank" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Generate PDF</a>
+                    <!-- <a href="generate_pdf.php?request=<?php echo $requestId; ?>" target="_blank" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Generate PDF</a> -->
 
                     <section class="my-9 bg-white">
                         <div class="flex justify-between item-center border text-dark leading-10">
