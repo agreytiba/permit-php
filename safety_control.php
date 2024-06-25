@@ -175,7 +175,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) . '?mainRequestId=' . $mainRequestId; ?>" enctype="multipart/form-data" class="grid gap-10 grid-cols-4 border-1 border-black rounded-10 text-black ">
             <h2 class="text-center col-span-full pt-7  text-xl md:text-3xl">SAFETY PROCEDURES</h2>
             <div class="col-span-full border-b-2 border-black p-2 md:p-5">
-                <p class="text-18 font-bold">All users have been made aware of this supervision/withdrawal</p>
+                <p class="text-18 font-bold">All users have been made aware of this
+                    supervision/withdrawal</p>
                 <div class="flex items-center space-x-10">
                     <p class="text-18">Yes</p>
                     <input type="radio" name="usersAwareness" value="yes" <?php if ($values['usersAwareness'] === 'yes') echo 'checked'; ?> required>
@@ -222,12 +223,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo '</div>';
             }
 
-            generateSection('Steps to eliminate hazard', 'stepToEliHazard', $values, $errors);
-            generateSection('Work to be suspended', 'workSuspended', $values, $errors);
-            generateSection('Equipment to be withdrawn', 'equipmentWithDrawn', $values, $errors);
-            generateSection('Assessment Form', 'assessmentForm', $values, $errors);
-            generateSection('Safety Measure', 'safetyMeasure', $values, $errors);
-            generateSection('Permit Obtained', 'permitObtained', $values, $errors);
+            generateSection('The following steps have been taken to eliminate, control
+                    or contain hazards in the area', 'stepToEliHazard', $values, $errors);
+            generateSection('The following processes are to be suspended during the
+                    course of the work', 'workSuspended', $values, $errors);
+            generateSection('The following equipment is to be withdrawn from service
+                    during the course of the work', 'equipmentWithDrawn', $values, $errors);
+            generateSection('The following hazards has been identified and risk assessed
+                    using attached Field level risk assessement form', 'assessmentForm', $values, $errors);
+            generateSection('The following safety measures are recommended', 'safetyMeasure', $values, $errors);
+            generateSection('The following Adjacent permits (Example
+                    Tanesco/Police/Tarura/Ewura/Tanapa e.tc) has been requested
+                    and obtained before the work', 'permitObtained', $values, $errors);
             ?>
 
             <div class="col-span-full border-b-2 border-black p-2 md:p-5">

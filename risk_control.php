@@ -125,6 +125,10 @@ $handleSubmit = htmlspecialchars($_SERVER["PHP_SELF"]);
                         <label for="power">Power</label>
                         <input type="checkbox" name="isoServices[]" value="water" id="water" <?php if (in_array('water', $values['isoServices'])) echo 'checked'; ?>>
                         <label for="water">Water</label>
+                        <input type="checkbox" name="isoServices[]" value="fuelLine" id="fuelLine" <?php if (in_array('water', $values['isoServices'])) echo 'checked'; ?>>
+                        <label for="water">fuel line</label>
+                        <input type="checkbox" name="isoServices[]" value="gases" id="gases" <?php if (in_array('water', $values['isoServices'])) echo 'checked'; ?>>
+                        <label for="water">gases</label>
                         <input type="checkbox" name="isoServices[]" value="others" id="others" <?php if (in_array('others', $values['isoServices'])) echo 'checked'; ?>>
                         <label for="others">Other</label>
                         <input type="text" name="otherService" placeholder="Enter other service" value="<?php echo isset($_POST['otherService']) ? $_POST['otherService'] : ''; ?>">
