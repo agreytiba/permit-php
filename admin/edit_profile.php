@@ -58,6 +58,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $user['username'] = $username;
             $user['phone_number'] = $phone_number;
             $user['password'] = $password;
+
+            header("Location: index.php");
         } else {
             $errors[] = "Error updating profile: " . $conn->error;
         }

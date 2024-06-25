@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include 'components/check_admin_login.php';
 include 'db_connection.php';
 

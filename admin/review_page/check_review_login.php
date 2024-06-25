@@ -2,7 +2,7 @@
 
 
 // Redirect to login page if not logged in
-if (!isset($_SESSION['email'])) {
+if (!isset($_SESSION['admin_email'])) {
     header("Location: ../login.php");
     exit();
 }
