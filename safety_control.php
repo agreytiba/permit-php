@@ -8,7 +8,7 @@ include 'components/check_login.php';
 if (isset($_GET['mainRequestId'])) {
     $mainRequestId = intval($_GET['mainRequestId']);
 } else {
-    echo "no id found";
+    $error = "no id found";
 }
 
 // Initialize values and errors
@@ -259,6 +259,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="spinner-border animate-spin inline-block w-12 h-12 border-4 rounded-full text-white"></div>
         </div>
     </div>
+    <?php if ($error) : ?>
+        <div id="errorModal" class="fixed inset-0 flex items-start justify-left bg-black bg-opacity-50">
+            <?php include 'components/error_handling.php'; ?>
+        </div>
+    <?php endif; ?>
 </body>
+<script>
+    // error handling  pop up
+    function closeModal() {
+        document.getElementById("errorModal").style.display = "none";
+    }
+
+    <?php if ($error) : ?>
+        document.getElementById("errorModal").style.display = "flex";
+    <?php endif; ?>
+</script>
 
 </html>

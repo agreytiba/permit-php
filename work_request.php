@@ -74,10 +74,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: safety_control.php?mainRequestId=$mainRequestId");
             exit();
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            $error = "Error: " . $sql . "<br>" . $conn->error;
         }
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        $error = "Error: " . $sql . "<br>" . $conn->error;
     }
 
     // Close connection
@@ -213,6 +213,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
     </div>
+    <?php if ($error) : ?>
+        <div id="errorModal" class="fixed inset-0 flex items-start justify-left bg-black bg-opacity-50">
+            <?php include 'components/error_handling.php'; ?>
+        </div>
+    <?php endif; ?>
     <script>
         // Save the mainRequestId to local storage
         document.addEventListener("DOMContentLoaded", function() {
@@ -272,6 +277,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         document.getElementById('workRequestForm').addEventListener('submit', function() {
             document.getElementById('spinner').classList.remove('hidden');
         });
+
+        //    error handling popup
+        function closeModal() {
+            document.getElementById("errorModal").style.display = "none";
+        }
+
+        <?php if ($error) : ?>
+            document.getElementById("errorModal").style.display = "flex";
+        <?php endif; ?>
     </script>
 </body>
 

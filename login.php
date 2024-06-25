@@ -2,6 +2,8 @@
 session_start();
 include 'db_connection.php';
 
+$error = '';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $conn->real_escape_string($_POST['email']);
     $password = $_POST['password'];
@@ -27,10 +29,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: index.php");
             exit();
         } else {
-            echo "Invalid password.";
+            $error = "Invalid password.";
         }
     } else {
-        echo "No user found with that email or the account is disabled.";
+        $error = "No user found with that email or the account is disabled.";
     }
 }
 ?>
@@ -48,7 +50,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <?php include 'components/navbar.php'; ?>
     <div class="flex justify-center items-center h-screen bg-gray-300">
-
         <div class="w-full max-w-md">
             <form action="login.php" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                 <h2 class="mb-6 text-center text-2xl font-bold">Login</h2>
@@ -80,6 +81,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </form>
         </div>
 
+        <?php if ($error) : ?>
+            <div id="errorModal" class="fixed inset-0 flex items-start justify-left bg-black bg-opacity-50">
+                <?php include 'components/error_handling.php'; ?>
+            </div>
+        <?php endif; ?>
+
         <script>
             function togglePasswordVisibility() {
                 var passwordInput = document.getElementById("password");
@@ -89,6 +96,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     passwordInput.type = "password";
                 }
             }
+
+            function closeModal() {
+                document.getElementById("errorModal").style.display = "none";
+            }
+
+            <?php if ($error) : ?>
+                document.getElementById("errorModal").style.display = "flex";
+            <?php endif; ?>
         </script>
     </div>
 </body>

@@ -45,10 +45,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             exit();
         } else {
-            echo "Invalid password.";
+            $error = "Invalid password.";
         }
     } else {
-        echo "No user found with that email.";
+        $error = "No user found with that email.";
     }
 }
 ?>
@@ -102,6 +102,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </form>
         </div>
     </div>
+    <?php if (isset($error)) : ?>
+        <div id="errorModal" class="fixed inset-0 flex items-start justify-left bg-black bg-opacity-50">
+            <?php include 'components/error_handling.php'; ?>
+        </div>
+    <?php endif; ?>
     <script>
         function togglePasswordVisibility() {
             var passwordInput = document.getElementById("password");
@@ -111,6 +116,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 passwordInput.type = "password";
             }
         }
+
+
+        function closeModal() {
+            document.getElementById("errorModal").style.display = "none";
+        }
+
+        <?php if ($error) : ?>
+            document.getElementById("errorModal").style.display = "flex";
+        <?php endif; ?>
     </script>
 </body>
 

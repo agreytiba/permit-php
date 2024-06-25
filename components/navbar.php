@@ -8,6 +8,7 @@ $navbarItems = [
 if (!$user) {
     $navbarItems[] = ['name' => 'Login', 'link' => '/login.php'];
     $navbarItems[] = ['name' => 'Register', 'link' => '/register.php'];
+    $navbarItems[] = ['name' => 'staff login', 'link' => '/admin/login.php'];
   
 } else {
     $navbarItems[] = ['name' => 'Create Request', 'link' => '/work_request.php'];

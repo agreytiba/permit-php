@@ -97,6 +97,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </form>
         </div>
     </div>
+    <?php if (isset($error)) : ?>
+        <div id="errorModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+            <?php include 'components/error_handling.php'; ?>
+        </div>
+    <?php endif; ?>
+    <?php if (isset($success)) : ?>
+        <div id="successModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+            <?php include 'components/success_handling.php'; ?>
+        </div>
+    <?php endif; ?>
+
+    <script>
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+    </script>
 </body>
 
 </html>

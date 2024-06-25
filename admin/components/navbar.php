@@ -12,6 +12,7 @@ if ($user) {
 
     $navbarItems[] = ['name' => 'home', 'link' => 'login.php'];
     $navbarItems[] = ['name' => 'Login', 'link' => 'login.php'];
+    $navbarItems[] = ['name' => 'user login', 'link' => '/login.php'];
     // $navbarItems[] = ['name' => 'Register', 'link' => 'register.php'];
 }
 ?>

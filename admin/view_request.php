@@ -14,7 +14,7 @@ $requestId = null;
 if (isset($_GET['request'])) {
     $requestId = intval($_GET['request']);
 } else {
-    echo "No request parameter found in the URL";
+    $error = "No request parameter found in the URL";
 }
 
 // // Get the user ID of the logged-in user
@@ -434,7 +434,22 @@ if ($workRequests['is_approved'] == 1) {
             <?php endif; ?>
         </div>
     </div>
+    <?php if (isset($error)) : ?>
+        <div id="errorModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+            <?php include 'components/error_handling.php'; ?>
+        </div>
+    <?php endif; ?>
+    <?php if (isset($success)) : ?>
+        <div id="successModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+            <?php include 'components/success_handling.php'; ?>
+        </div>
+    <?php endif; ?>
+
     <script>
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
         function closeWelcomeCard() {
             const welcomeCard = document.querySelector('.welcome-card');
             welcomeCard.style.display = 'none';

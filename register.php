@@ -9,12 +9,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $conn->real_escape_string($_POST['email']);
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
-    $sql = "INSERT INTO users (first_name, last_name, username, phone_number, email, password) VALUES ('$firstName', '$lastName', '$username', '$phoneNumber', '$email', '$password')";
+    // Check if the email already exists
+    $emailCheckSql = "SELECT id FROM users WHERE email = '$email'";
+    $emailCheckResult = $conn->query($emailCheckSql);
 
-    if ($conn->query($sql) === TRUE) {
-        echo "Registration successful!";
+    if ($emailCheckResult->num_rows > 0) {
+        $error = "Email already exists. Please use a different email.";
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        $sql = "INSERT INTO users (first_name, last_name, username, phone_number, email, password) VALUES ('$firstName', '$lastName', '$username', '$phoneNumber', '$email', '$password')";
+
+        if ($conn->query($sql) === TRUE) {
+            $success = "Registration successful!";
+            header("Location: login.php");
+            exit();
+        } else {
+            $error = "Error: " . $sql . "<br>" . $conn->error;
+        }
     }
 }
 ?>
@@ -82,6 +92,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </form>
         </div>
     </div>
+
+    <?php if (isset($error)) : ?>
+        <div id="errorModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+            <?php include 'components/error_handling.php'; ?>
+        </div>
+    <?php endif; ?>
+    <?php if (isset($success)) : ?>
+        <div id="successModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+            <?php include 'components/success_handling.php'; ?>
+        </div>
+    <?php endif; ?>
+
+    <script>
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+    </script>
 </body>
 
 </html>
