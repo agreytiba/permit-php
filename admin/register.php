@@ -15,9 +15,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO admins (first_name, last_name, username, phone_number, email, password, user_type) VALUES ('$firstName', '$lastName', '$username', '$phoneNumber', '$email', '$password', '$user_type')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Registration successful!";
+        $success = "Registration successful!";
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        $error = "Error: " . $sql . "<br>" . $conn->error;
     }
 }
 ?>

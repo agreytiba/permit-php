@@ -259,7 +259,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="spinner-border animate-spin inline-block w-12 h-12 border-4 rounded-full text-white"></div>
         </div>
     </div>
-    <?php if ($error) : ?>
+    <?php if (isset($error)) : ?>
         <div id="errorModal" class="fixed inset-0 flex items-start justify-left bg-black bg-opacity-50">
             <?php include 'components/error_handling.php'; ?>
         </div>

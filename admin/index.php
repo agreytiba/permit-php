@@ -4,13 +4,50 @@ session_start();
 include 'components/check_admin_login.php';
 // Include database connection
 include 'db_connection.php';
-// Fetch counts from APIs
+
+// Initialize counts
 $reviewCount = 0;
 $approveCount = 0;
-$RequestsCount = 2;
-$declineCount = 4;
-$approvedCount = 5;
-$usersCount = 6;
+$RequestsCount = 0;
+$declineCount = 0;
+$approvedCount = 0;
+$usersCount = 0;
+
+// Fetch counts from the database
+// Assuming you have appropriate tables and columns
+$requestsQuery = "SELECT COUNT(*) as count FROM mainrequests WHERE enabled = 1 ";
+$reviewQuery = "SELECT COUNT(*) as count FROM mainrequests WHERE enabled = 1 AND is_reviewed = 0 AND permit_status = 'Received'";
+$approveQuery = "SELECT COUNT(*) as count FROM mainrequests WHERE   enabled = 1 AND permit_status = 'reviewed' AND is_approved = 0";
+$declineQuery = "SELECT COUNT(*) as count FROM mainrequests WHERE   enabled = 1 AND permit_status = 'declined' AND is_declined = 0";
+$approvedQuery = "SELECT COUNT(*) as count FROM mainrequests WHERE  enabled = 1 AND permit_status = 'approved' AND  is_approved= 1";
+$usersQuery = "SELECT COUNT(*) as count FROM users WHERE enabled = 1";
+
+// Execute the queries and fetch the counts
+if ($result = $conn->query($requestsQuery)) {
+    $row = $result->fetch_assoc();
+    $RequestsCount = $row['count'];
+}
+if ($result = $conn->query($reviewQuery)) {
+    $row = $result->fetch_assoc();
+    $reviewCount = $row['count'];
+}
+if ($result = $conn->query($approveQuery)) {
+    $row = $result->fetch_assoc();
+    $approveCount = $row['count'];
+}
+if ($result = $conn->query($declineQuery)) {
+    $row = $result->fetch_assoc();
+    $declineCount = $row['count'];
+}
+if ($result = $conn->query($approvedQuery)) {
+    $row = $result->fetch_assoc();
+    $approvedCount = $row['count'];
+}
+if ($result = $conn->query($usersQuery)) {
+    $row = $result->fetch_assoc();
+    $usersCount = $row['count'];
+}
+
 ?>
 
 <?php include 'components/header_admin.php'; ?>
